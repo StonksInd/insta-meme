@@ -10,7 +10,8 @@ LEFT JOIN commentaires ON contenus.id = commentaires.id_contenu
 GROUP BY contenus.id
 
 -- 3. Lister les 3 contenus les plus likés avec leur nombre de likes
-SELECT contenus.id, COUNT(likes.id_contenu) AS nombre_like FROM contenus INNER JOIN likes ON contenus.id = likes.id_contenu GROUP BY contenus.id
+SELECT contenus.id, COUNT(likes.id_contenu) AS nombre_like FROM contenus 
+INNER JOIN likes ON contenus.id = likes.id_contenu GROUP BY contenus.id
 ORDER BY COUNT(likes.id_contenu) DESC LIMIT 3
 
 -- 4. Lister les 3 contenus les plus commentés avec leur nombre de commentaires
@@ -28,4 +29,32 @@ SELECT contenus.id FROM contenus LEFT JOIN commentaires ON contenus.id = comment
 GROUP BY contenus.id
 HAVING COUNT(commentaires.id_contenu) = 0
 
+-- 7. Afficher les pseudos des utilisateurs n’ayant ni commenté ni liké aucun contenu
+SELECT utilisateurs.pseudo FROM utilisateurs 
+LEFT JOIN likes ON utilisateurs.id  = likes.id_utilisateur
+LEFT JOIN commentaires ON utilisateurs.id = commentaires.id_utilisateur
+GROUP BY utilisateurs.id
+HAVING COUNT(likes.id_utilisateur) = 0 AND COUNT(commentaires.id_utilisateur) = 0
 
+--8
+SELECT DATE_FORMAT(contenus.date_publication, " %e %m %Y"),COUNT(contenus.id), COUNT(commentaires.id)  FROM contenus 
+LEFT JOIN commentaires ON contenus.id = commentaires.id_contenu
+GROUP BY  DATE_FORMAT(contenus.date_publication, " %e %m %Y")
+ORDER BY  COUNT(contenus.id), COUNT(commentaires.id) 
+
+
+
+--9. Afficher les informations des contenus ayant été likés au moins 10 fois et possédant au moins 5 commentaires
+SELECT contenus.id, COUNT(DISTINCT likes.id_utilisateur), COUNT(DISTINCT commentaires.id) FROM contenus 
+LEFT JOIN commentaires ON contenus.id = commentaires.id_contenu
+LEFT JOIN likes ON contenus.id = likes.id_contenu
+GROUP BY contenus.id
+HAVING COUNT(DISTINCT likes.id_utilisateur) >= 10 AND COUNT(DISTINCT commentaires.id) >=5
+
+
+-- 10
+
+SELECT utilisateurs.id, utilisateurs.pseudo FROM utilisateurs
+LEFT JOIN contenus ON utilisateurs.id = contenus.id_utilisateur
+GROUP BY utilisateurs.id
+WHERE DATEDIFF(minute, utilisateurs.date_inscription, contenus.date_publication) <=5 
