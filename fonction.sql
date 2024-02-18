@@ -52,9 +52,11 @@ GROUP BY contenus.id
 HAVING COUNT(DISTINCT likes.id_utilisateur) >= 10 AND COUNT(DISTINCT commentaires.id) >=5
 
 
--- 10
+--10. Afficher les utilisateurs ayant postés au moins 3 contenus durant les 5 minutes suivant leur date d’inscription
 
-SELECT utilisateurs.id, utilisateurs.pseudo FROM utilisateurs
-LEFT JOIN contenus ON utilisateurs.id = contenus.id_utilisateur
-GROUP BY utilisateurs.id
-WHERE DATEDIFF(minute, utilisateurs.date_inscription, contenus.date_publication) <=5 
+SELECT utilisateurs.id, utilisateurs.pseudo
+FROM utilisateurs
+JOIN contenus ON utilisateurs.id = contenus.id_utilisateur
+WHERE TIMESTAMPDIFF(MINUTE, utilisateurs.date_inscription, contenus.date_publication) < 5
+GROUP BY utilisateurs.id, utilisateurs.pseudo
+HAVING COUNT(contenus.id) >= 3
