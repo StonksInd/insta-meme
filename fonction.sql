@@ -36,8 +36,9 @@ LEFT JOIN commentaires ON utilisateurs.id = commentaires.id_utilisateur
 GROUP BY utilisateurs.id
 HAVING COUNT(likes.id_utilisateur) = 0 AND COUNT(commentaires.id_utilisateur) = 0
 
---8
-SELECT DATE_FORMAT(contenus.date_publication, " %e %m %Y"),COUNT(contenus.id), COUNT(commentaires.id)  FROM contenus 
+--8 Afficher les jours pour lesquels au moins un contenu ou un commentaire a été posté, en triant par ordre décroissant du nombre de contenus puis du nombre de commentaires publiés
+
+SELECT DATE_FORMAT(contenus.date_publication, " %e %m %Y"),COUNT(DISTINCT contenus.id), COUNT(DISTINCT commentaires.id)  FROM contenus 
 LEFT JOIN commentaires ON contenus.id = commentaires.id_contenu
 GROUP BY  DATE_FORMAT(contenus.date_publication, " %e %m %Y")
 ORDER BY  COUNT(contenus.id), COUNT(commentaires.id) 
