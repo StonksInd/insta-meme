@@ -10,6 +10,7 @@ button{
 
 .meme{
     max-height: 300px;
+    max-width: 200px;
 
 }
 
@@ -18,7 +19,7 @@ button{
      display: grid;
      
      grid-template-columns: 1fr 1fr;
-     grid-column-gap: 170px;
+     grid-column-gap: 180px;
 }
 #P1{
     display: grid;

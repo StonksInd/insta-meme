@@ -24,8 +24,8 @@
         </div>
 
         <div> 
-            <a class="Button" href="create.html">Créer</a>
-            <a class="Button" href="user_ac.html">Profil</a>
+            <a class="Button" href="create.php">Créer</a>
+            <a class="Button" href="user_ac.php">Profil</a>
         </div>
         
         
