@@ -2,7 +2,7 @@
 require_once 'php/affichage.php';
 require_once 'php/db.php';
 
-$stmt = db()->prepare("SELECT * FROM contenus");
+$stmt = db()->prepare("SELECT * FROM contenus JOIN utilisateurs ON  contenus.id_utilisateur = utilisateurs.id GROUP BY contenus.id ");
 $stmt->execute();
 $contenus = $stmt->fetchAll();
 ?>

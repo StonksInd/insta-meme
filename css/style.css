@@ -9,8 +9,9 @@ button{
 
 
 .meme{
-    max-height: 300px;
-    max-width: 200px;
+    max-height: 200px;
+    max-height: 100px;
+    
 
 }
 
@@ -30,6 +31,8 @@ button{
 }
 #span{
     border: 2px solid #000; 
+    height: 300px;
+    width: 300px;
     
 
 }
