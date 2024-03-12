@@ -2,7 +2,10 @@
 require_once 'php/affichage.php';
 require_once 'php/db.php';
 
-$stmt = db()->prepare("SELECT * FROM contenus JOIN utilisateurs ON  contenus.id_utilisateur = utilisateurs.id GROUP BY contenus.id ");
+$stmt = db()->prepare("SELECT contenus.*, utilisateurs.pseudo
+FROM contenus 
+JOIN utilisateurs ON  contenus.id_utilisateur = utilisateurs.id 
+GROUP BY contenus.id ");
 $stmt->execute();
 $contenus = $stmt->fetchAll();
 ?>
@@ -25,7 +28,7 @@ $contenus = $stmt->fetchAll();
            
 
         '<div id=span>'
-        .'<h2> Jean</h2>'
+        . '<h2>  '. $contenu['pseudo'] .' </h2>'
         .'<a href="content.php"<article> <img src="' . 'images/' . $contenu['chemin_image'] . '" class="meme" /></article></a>'
         .'<div id="reaction">'
         .'<button>aimer</button>'
