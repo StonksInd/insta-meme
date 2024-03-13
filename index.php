@@ -10,14 +10,16 @@ $tcount=$count->fetchAll();
 //Pagination
 @$page=$_GET["page"];
 if(empty($page)) $page=1;
-$nb_elt_page = 10;
+$nb_elt_page = 9;
 $nb_pages= ceil($tcount[0]["cpt"]/$nb_elt_page);
 $debut=($page-1)* $nb_elt_page;
 
 //Recupere le contenu
-$stmt = db()->prepare("SELECT contenus.*, utilisateurs.pseudo
+$stmt = db()->prepare("SELECT contenus.*, utilisateurs.pseudo, COUNT(likes.id_contenu) as likes, GROUP_CONCAT(DISTINCT commentaires.message SEPARATOR ', ') AS messages
 FROM contenus 
 JOIN utilisateurs ON  contenus.id_utilisateur = utilisateurs.id 
+LEFT JOIN likes ON contenus.id = likes.id_contenu
+LEFT JOIN commentaires ON contenus.id = commentaires.id_contenu
 GROUP BY contenus.id
 LIMIT $debut, $nb_elt_page ");
 $stmt->execute();
@@ -57,13 +59,13 @@ if(count($contenus)==0)
        
        .'</div>'
        .'<p id=P1>'
-        .'Aimé par ...'
+        .'Aimé par ' . $contenu['likes'] . " utilisateurs"
         .'</p>'
         .'<p id=P1>'
         . $contenu['description']
         .'</p>'
         .'<form>'
-        .    '<textarea class="carrecommentaire" placeholder="Commentaire :"></textarea>'
+        .    '<textarea class="carrecommentaire" placeholder="Commentaire : ">'. $contenu['messages'] . '</textarea>'
         .'</form>'
     .'</div>';
             
@@ -72,11 +74,12 @@ if(count($contenus)==0)
     
 </main>
 <?php
-for($i;$i<=$nb_pages;$i++){
-    if($page!=$i)
-        echo "<a href='?page=$i'>$i</a>&nbsp;";
-    else
-        echo "<a>$i</a>&nbsp;";
+
+for($i=1;$i<=$nb_pages;$i++){
+    if($page!=$i){
+        echo "<a class='Button' href='?page=$i'>$i</a>&nbsp;";}
+    else{
+        echo "<a>$i</a>&nbsp;";}
 }
 
 ?> 
