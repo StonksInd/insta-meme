@@ -2,17 +2,24 @@
 require_once 'php/affichage.php';
 require_once 'php/db.php';
 
-$stmt = db()->prepare("SELECT contenus.*, utilisateurs.pseudo, COUNT(likes.id_contenu) as likes, 
-GROUP_CONCAT(DISTINCT commentaires.message SEPARATOR ', ') AS messages
+$stmt = db()->prepare("SELECT contenus.*, utilisateurs.pseudo, COUNT(likes.id_contenu) as likes
 FROM contenus 
 JOIN utilisateurs ON  contenus.id_utilisateur = utilisateurs.id 
 LEFT JOIN likes ON contenus.id = likes.id_contenu
-LEFT JOIN commentaires ON contenus.id = commentaires.id_contenu
-WHERE utilisateurs.pseudo :pseudo");
-$stmt->execute();
-$stmt->bindParam(":pseudo",$_SESSION["pseudo"]);
+WHERE utilisateurs.pseudo = :pseudo
+GROUP BY contenus.id");
+$stmt->execute([
+    'pseudo' => $_GET["pseudo"]
+]);
 $contenus = $stmt->fetchAll();
+
+$commentaires = db()->prepare("SELECT commentaires.* FROM commentaires");
+$commentaires->execute();
+$commentaires = $commentaires->fetchAll();
+
+
 ?>
+
 
 <?php echo pageHeader("Menu Insta Meme");?>
 <link rel="stylesheet" href="css/user_ac.css">
@@ -40,9 +47,16 @@ $contenus = $stmt->fetchAll();
         .'</p>'
         .'<p id=P1>'
         . $contenu['description']
-        .'</p>'
-        .'<form>'
-        .    '<textarea class="carrecommentaire" placeholder="Commentaire : ">'. $contenu['messages'] . '</textarea>'
+        .'</p>';
+
+        echo '<form>'
+        .    '<textarea class="carrecommentaire" placeholder="Commentaire : ">';
+        foreach($commentaires as $commentaire){
+            if($commentaire['id_contenu'] === $contenu['id']){
+                echo $commentaire['message'];
+            }
+        } echo
+        '</textarea>'
         .'</form>'
     .'</div>';
             

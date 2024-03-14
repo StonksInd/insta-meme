@@ -46,13 +46,10 @@ if(count($contenus)==0)
     foreach ($contenus as $contenu) {
         echo 
             
-            
-            
-           
 
         '<div id=span>'
-        . '<h2>  '. $contenu['pseudo'] .' </h2>'
-        .'<a href="content.php"<article> <img src="' . 'images/' . $contenu['chemin_image'] . '" class="meme" /></article></a>'
+        . '<h2><a href="user_ac.php?pseudo='.$contenu['pseudo'].'">'.$contenu['pseudo'].'</a>  </h2>'
+        .'<a href="content.php?contenu='.$contenu["id"].'"><article> <img src="' . 'images/' . $contenu['chemin_image'] . '" class="meme" /></article></a>'
         .'<div id="reaction">'
         .'<button>aimer</button>'
         .'<button>partage</button>'

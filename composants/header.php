@@ -29,7 +29,7 @@
             
             <?php if(isset($_SESSION["Is_conected"]) && $_SESSION["Is_conected"]){
                 echo '<a class="Button" href="deco.php">deco</a>&nbsp;'
-                .  '<a class="Button" href="user_ac.php">profil</a>&nbsp;';
+                .  '<a class="Button" href="user_ac.php?pseudo='. $_SESSION['pseudo'] .'">profil</a>&nbsp;';
 
             } else{
                 echo '<a class="Button" href="login.php">Login</a>';
