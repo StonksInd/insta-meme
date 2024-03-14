@@ -15,7 +15,8 @@ $nb_pages= ceil($tcount[0]["cpt"]/$nb_elt_page);
 $debut=($page-1)* $nb_elt_page;
 
 //Recupere le contenu
-$stmt = db()->prepare("SELECT contenus.*, utilisateurs.pseudo, COUNT(likes.id_contenu) as likes, GROUP_CONCAT(DISTINCT commentaires.message SEPARATOR ', ') AS messages
+$stmt = db()->prepare("SELECT contenus.*, utilisateurs.pseudo, COUNT(likes.id_contenu) as likes, 
+GROUP_CONCAT(DISTINCT commentaires.message SEPARATOR ', ') AS messages
 FROM contenus 
 JOIN utilisateurs ON  contenus.id_utilisateur = utilisateurs.id 
 LEFT JOIN likes ON contenus.id = likes.id_contenu

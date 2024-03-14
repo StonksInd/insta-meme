@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +26,15 @@
 
         <div> 
             <a class="Button" href="create.php">Créer</a>
-            <a class="Button" href="user_ac.php">Profil</a>
+            
+            <?php if(isset($_SESSION["Is_conected"]) && $_SESSION["Is_conected"]){
+                echo '<a class="Button" href="deco.php">deco</a>&nbsp;'
+                .  '<a class="Button" href="user_ac.php">profil</a>&nbsp;';
+
+            } else{
+                echo '<a class="Button" href="login.php">Login</a>';
+            }
+            ?>
         </div>
         
         
