@@ -82,3 +82,11 @@ for($i=1;$i<=$nb_pages;$i++){
 
 ?> 
 <?php echo pageFooter(); ?>
+
+
+//! choses à ajouter :
+//commentaires
+//recherche avec auto complétion
+//inscription
+//likes
+//partage

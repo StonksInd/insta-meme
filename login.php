@@ -8,7 +8,7 @@ if(isset($_POST['user_pseudo']) && !empty($_POST['user_pseudo'])
     $utilisateur->execute([$_POST['user_pseudo'], md5($_POST['password'])]);
     $utilisateur=$utilisateur->fetchAll();
     if(count($utilisateur) > 0){
-        $utilisateur[0]['id'];
+        $_SESSION["id_user"]= $utilisateur[0]['id'];
         $_SESSION["pseudo"] = $utilisateur[0]['pseudo'];
         $_SESSION["Is_conected"] = True;
 
