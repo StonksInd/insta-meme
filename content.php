@@ -28,6 +28,8 @@ $commentaires = $commentaires->fetchAll();
 
         '<div id=span>'
         . '<h2>'. $contenus['pseudo'] .'</h2>'
+        
+        . '<h2>'.str_replace("_", " ", explode(".",$contenus['chemin_image'])[0]).'</h2>'
         .'<a href="content.php"><article> <img src="' . 'images/' . $contenus['chemin_image'] . '" class="meme" /></article></a>'
         .'<div id="reaction">'
         .'<button>aimer</button>'
@@ -42,16 +44,18 @@ $commentaires = $commentaires->fetchAll();
         . $contenus['description']
         .'</p>'
         .'<form>'
-        .    '<textarea class="carrecommentaire" placeholder="Commentaire : ">'
-        . foreach($commentaire in $commentaire){$commentaires['message'];} 
-        .'</textarea>'
+        .    '<textarea class="carrecommentaire" placeholder="Commentaire : ">';
+        foreach($commentaires as $commentaire){
+            if($commentaire['id_contenu'] === $contenus['id']){
+                echo $commentaire['message'];}}
+        echo
+        '</textarea>'
         .'</form>'
     .'</div>';
             
     
     ?> 
-
-
+    
 
 </main>
 

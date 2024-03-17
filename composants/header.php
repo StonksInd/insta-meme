@@ -25,14 +25,15 @@
         </div>
 
         <div> 
-            <a class="Button" href="create.php">Créer</a>
+            
             
             <?php if(isset($_SESSION["Is_conected"]) && $_SESSION["Is_conected"]){
-                echo '<a class="Button" href="deco.php">deco</a>&nbsp;'
-                .  '<a class="Button" href="user_ac.php?pseudo='. $_SESSION['pseudo'] .'">profil</a>&nbsp;';
-
+                echo '<a class="Button" href="deco.php">Deconnexion</a>&nbsp;'
+                .  '<a class="Button" href="user_ac.php?pseudo='. $_SESSION['pseudo'] .'">Profil</a>&nbsp;'
+                . '<a class="Button" href="create.php">Nouveau post</a>';
             } else{
-                echo '<a class="Button" href="login.php">Login</a>';
+                echo '<a class="Button" href="login.php">Connexion</a>'
+                . '<a class="Button" href="login.php">Inscription</a>';
             }
             ?>
         </div>

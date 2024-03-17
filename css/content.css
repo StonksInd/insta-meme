@@ -2,20 +2,6 @@ body{
     margin:0px;
     }
 
-header{
-        display: flex; 
-        align-items: center; 
-        justify-content: space-between;
-        border: 2px solid #000; 
-        padding: 10px; 
-    
-}
-
-#img_logo{
-    display: flex; 
-    align-items: center; 
- 
-}
 
 .Button{
 
@@ -31,7 +17,7 @@ button{
 }
 
 .meme{
-    max-height: 600px;
+    max-height: 300px;
     align-items: center;
 
 }
@@ -84,4 +70,10 @@ main{
 
 }
 
+#span{
+    border: 2px solid #000; 
+    height: 300px;
+    width: 300px;
+    
 
+}
