@@ -3,10 +3,6 @@ require_once 'php/affichage.php';
 require_once 'php/db.php';
 
 
-
-
-
-
 ?>
 
 <?php echo pageHeader("Menu Insta Meme");?>

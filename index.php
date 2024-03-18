@@ -50,12 +50,12 @@ if(count($contenus)==0)
         '<div id=span>'
         . '<h2><a href="user_ac.php?pseudo='.$contenu['pseudo'].'">'.$contenu['pseudo'].'</a>  </h2>'
         .'<a href="content.php?contenu='.$contenu["id"].'"><article> <img src="' . 'images/' . $contenu['chemin_image'] . '" class="meme" /></article></a>'
-        .'<div id="reaction">'
-        .'<button>aimer</button>'
-        .'<button>partage</button>'
+        .'<form action="like.php" method="POST" enctype="multipart/form-data" id="reaction">
+            <button name="like" type="submit">Like</button>
+            <button name="partage" type="submit">Partage</button>
+        </form>'
 
        
-       .'</div>'
        .'<p id=P1>'
         .'Aimé par ' . $contenu['likes'] . " utilisateurs"
         .'</p>'
@@ -84,9 +84,9 @@ for($i=1;$i<=$nb_pages;$i++){
 <?php echo pageFooter(); ?>
 
 
-//! choses à ajouter :
+<!-- //! choses à ajouter :
 //commentaires
 //recherche avec auto complétion
 //inscription
 //likes
-//partage
+//partage -->

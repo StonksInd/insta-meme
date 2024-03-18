@@ -32,8 +32,8 @@
                 .  '<a class="Button" href="user_ac.php?pseudo='. $_SESSION['pseudo'] .'">Profil</a>&nbsp;'
                 . '<a class="Button" href="create.php">Nouveau post</a>';
             } else{
-                echo '<a class="Button" href="login.php">Connexion</a>'
-                . '<a class="Button" href="login.php">Inscription</a>';
+                echo '<a class="Button" href="login.php">Connexion</a>$nbsp;'
+                . '<a class="Button" href="login.php">Inscription</a>$nbsp;';
             }
             ?>
         </div>
