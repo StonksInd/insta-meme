@@ -22,6 +22,7 @@ JOIN utilisateurs ON  contenus.id_utilisateur = utilisateurs.id
 LEFT JOIN likes ON contenus.id = likes.id_contenu
 LEFT JOIN commentaires ON contenus.id = commentaires.id_contenu
 GROUP BY contenus.id
+
 LIMIT $debut, $nb_elt_page ");
 $stmt->execute();
 $contenus = $stmt->fetchAll();
@@ -51,6 +52,7 @@ if(count($contenus)==0)
         . '<h2><a href="user_ac.php?pseudo='.$contenu['pseudo'].'">'.$contenu['pseudo'].'</a>  </h2>'
         .'<a href="content.php?contenu='.$contenu["id"].'"><article> <img src="' . 'images/' . $contenu['chemin_image'] . '" class="meme" /></article></a>'
         .'<form action="like.php" method="POST" enctype="multipart/form-data" id="reaction">
+            <input type="hidden" value="' . $contenu['id'] . '" name="id_contenu">
             <button name="like" type="submit">Like</button>
             <button name="partage" type="submit">Partage</button>
         </form>'
