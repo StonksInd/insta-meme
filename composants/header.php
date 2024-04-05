@@ -20,8 +20,19 @@
         </div>
 
         <div>
-            <input type="search" placeholder="Rechercher un compte…" size="30">
-            <button>Rechercher</button>
+        <form action="" method="post">
+
+            <label for="name"></label>
+            <input type="search" name="pseudo" placeholder="Rechercher un compte…" size="30">
+
+            <button type="submit">Rechercher</button>
+
+        </form>
+        <?php if(isset($_POST['pseudo']) && !empty($_POST['pseudo'])){
+
+            header("location:recherche.php?recherche=". $_POST['pseudo']." ");
+        }
+        ?>
         </div>
 
         <div> 
@@ -33,7 +44,7 @@
                 . '<a class="Button" href="create.php">Nouveau post</a>';
             } else{
                 echo '<a class="Button" href="login.php">Connexion</a>&nbsp;'
-                . '<a class="Button" href="login.php">Inscription</a>';
+                . '<a class="Button" href="inscription.php">Inscription</a>';
             }
             ?>
         </div>

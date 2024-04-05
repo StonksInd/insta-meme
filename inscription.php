@@ -3,16 +3,13 @@ require_once 'php/affichage.php';
 require_once 'php/db.php';
 if(isset($_POST['user_pseudo']) && !empty($_POST['user_pseudo'])
 && isset($_POST['password']) && !empty($_POST['password'])){
-    $utilisateur = db()->prepare("SELECT id, pseudo FROM utilisateurs WHERE pseudo = ? AND mot_de_passe = ?");
+    $utilisateur = db()->prepare("SELECT id, pseudo FROM utilisateurs WHERE pseudo = ?");
     $utilisateur->setFetchMode(PDO::FETCH_ASSOC);
-    $utilisateur->execute([$_POST['user_pseudo'], md5($_POST['password'])]);
+    $utilisateur->execute([$_POST['user_pseudo']]);
     $utilisateur=$utilisateur->fetchAll();
-    if(count($utilisateur) > 0){
-        $_SESSION["id_user"]= $utilisateur[0]['id'];
-        $_SESSION["pseudo"] = $utilisateur[0]['pseudo'];
-        $_SESSION["Is_conected"] = True;
-
-        header('Location: index.php');
+    if(count($utilisateur) <= 0){
+        $insert = db()->prepare("INSERT INTO utilisateurs (pseudo, mot_de_passe, date_inscription) VALUES (?, ?, CURRENT_TIMESTAMP)");
+        $insert->execute([$_POST["user_pseudo"], md5($_POST['password'])]);
     }
 }
 
@@ -33,11 +30,16 @@ if(isset($_POST['user_pseudo']) && !empty($_POST['user_pseudo'])
       <input type="password" name="password" />
     </li>
     <?php if(isset($_POST['user_pseudo']) && !empty($_POST['user_pseudo'])&& isset($_POST['password']) && !empty($_POST['password']))
-                {if(count($utilisateur) <= 0){echo "Il y a erreur dans le pseudo ou le compte n'existe pas" .PHP_EOL
-                  . '<a href="inscription.php"><button type="button">Inscription</button></a>';}} ?>
+                {if(count($utilisateur) > 0){echo 'Ce pseudo est déjà prit, choisissez en un autre';}
+                
+                
+                elseif(count($utilisateur) <= 0){echo 'compte créé';}}
+                
+                ?>
     <li>
-        <button type="submit">Connexion</button>
+        <button type="submit">Inscription</button>
     </li>
+
   </ul>
 </form>
 </div>
