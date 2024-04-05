@@ -72,8 +72,7 @@ main{
 
 #span{
     border: 2px solid #000; 
-    height: 300px;
-    width: 300px;
+    margin: 50px 200px 0 200px;
     
 
 }

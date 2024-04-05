@@ -59,15 +59,7 @@ require_once 'php/db.php';
 
 
 
-<!-- <div id="post">
 
-        <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
-        <form>
-            <textarea class="carrecommentaire" placeholder="Champs de description :"></textarea>
-        </form>
-
-        <button id="publication">Publier</button>
-    </div>-->
 </main> 
 
 <?php echo pageFooter(); ?>
