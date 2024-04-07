@@ -116,4 +116,4 @@ for($i=1;$i<=$nb_pages;$i++){
 
 
 <!-- //! choses à ajouter :
-//partage -->
+//partage -->()
