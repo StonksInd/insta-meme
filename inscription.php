@@ -19,7 +19,7 @@ if(isset($_POST['user_pseudo']) && !empty($_POST['user_pseudo'])
 
 <body>
 <div class='formulaire'>
-<form action="" method="post">
+<form action="" method="POST">
   <ul>
     <li>
       <label for="name">Pseudo&nbsp;:</label>

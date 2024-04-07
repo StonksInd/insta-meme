@@ -75,10 +75,7 @@ if(isset($_POST["commentaire"])){
             <button name="like" type="submit">Like</button>
         </form>'
 
-        .'<form action="partage.php" method="POST" enctype="multipart/form-data" >
-        <input type="hidden" value="' . $contenu['id'] . '" name="id_contenu">
-        <button name="partage" type="submit">Partage</button>
-        </form>'
+        .'<a href="partage.php?fichier='. $contenu['chemin_image'] .'"><button type="button">Partage</button></a>'
         .'</div>'
 
        .'<p id=P1>'
@@ -88,13 +85,19 @@ if(isset($_POST["commentaire"])){
         . $contenu['description']
         .'</p>'
         .'<form action="index.php" method="POST" enctype="multipart/form-data">'
-        .'<div class="carrecommentaire">'. $contenu['messages'] . '</div>'
-        . '<label for="commentaire"></label>'
+        .'<div class="carrecommentaire">'. $contenu['messages'] . '</div>';
+        if(isset($_SESSION["Is_conected"]) && $_SESSION["Is_conected"]){
+            echo
+         '<label for="commentaire"></label>'
         . '<input type="text" name="commentaire">'
         . '<input type="hidden" name="id_contenu" value="'. $contenu['id'] .'">'
-        . '<button type="submit">Publier un commentaire</button>'
-
-        .'</form>'
+        . '<button type="submit">Publier un commentaire</button>';
+        }
+        else{
+            echo
+            '<a href="login.php"><button type="button">Connectez-vous pour commenter</button></a>';
+        }
+        echo '</form>'
     .'</div>';
     
             
@@ -116,4 +119,5 @@ for($i=1;$i<=$nb_pages;$i++){
 
 
 <!-- //! choses à ajouter :
-//partage -->()
+si pas co envoyer vers connexion pour les likes, partage, commentaire
+ -->
