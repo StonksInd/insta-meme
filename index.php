@@ -64,7 +64,7 @@ if(isset($_POST["commentaire"])){
     foreach ($contenus as $contenu) {
         echo 
             
-
+       
         '<div id=span>'
         . '<h2><a href="user_ac.php?pseudo='.$contenu['pseudo'].'">'.$contenu['pseudo'].'</a>  </h2>'
         .'<a href="content.php?contenu='.$contenu["id"].'"><article> <img src="' . 'images/' . $contenu['chemin_image'] . '" class="meme" /></article></a>'
@@ -79,7 +79,7 @@ if(isset($_POST["commentaire"])){
         .'</div>'
 
        .'<p id=P1>'
-        .'Aimé par ' . $contenu['likes'] . " utilisateurs"
+        .'Aimé par ' . $contenu['likes'] . ' utilisateurs'
         .'</p>'
         .'<p id=P1>'
         . $contenu['description']

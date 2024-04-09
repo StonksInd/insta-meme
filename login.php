@@ -35,9 +35,9 @@ if(isset($_POST['user_pseudo']) && !empty($_POST['user_pseudo'])
     <?php if(isset($_POST['user_pseudo']) && !empty($_POST['user_pseudo'])&& isset($_POST['password']) && !empty($_POST['password']))
                 {if(count($utilisateur) <= 0){echo "Il y a erreur dans le pseudo ou le compte n'existe pas" .PHP_EOL
                   . '<a href="inscription.php"><button type="button">Inscription</button></a>';}} ?>
-    <li>
+
         <button type="submit">Connexion</button>
-    </li>
+
   </ul>
 </form>
 </div>
