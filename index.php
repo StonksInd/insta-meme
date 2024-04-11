@@ -120,4 +120,5 @@ for($i=1;$i<=$nb_pages;$i++){
 
 <!-- //! choses à ajouter :
 si pas co envoyer vers connexion pour les likes, partage, commentaire
+user ac like partage et tout
  -->
