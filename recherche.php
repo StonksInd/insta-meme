@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/recherche.css">
 <?php
 require_once 'php/affichage.php';
 require_once 'php/db.php';

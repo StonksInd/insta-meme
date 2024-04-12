@@ -42,6 +42,7 @@ require_once 'php/db.php';
     
     
     ?>
+    <div id="post">
     <form action="create.php" method="POST" enctype="multipart/form-data">
         <label for="file">Image</label>
         <input type="file" name="file" accept="image/png, image/jpeg, image/jpg, image/gif">
@@ -51,7 +52,7 @@ require_once 'php/db.php';
 
 
     </form>
-
+    </div>
 
 
 
