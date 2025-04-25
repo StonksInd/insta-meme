@@ -1,0 +1,75 @@
+-- Création de la base de données
+CREATE DATABASE IF NOT EXISTS insta_meme
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+-- Utilisation de la base de données
+USE insta_meme;
+
+-- Création de la table utilisateurs
+CREATE TABLE utilisateurs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pseudo VARCHAR(50) NOT NULL UNIQUE,
+    mot_de_passe VARCHAR(255) NOT NULL,
+    date_inscription DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Création de la table contenus
+CREATE TABLE contenus (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_utilisateur INT NOT NULL,
+    description TEXT,
+    chemin_image VARCHAR(255) NOT NULL,
+    date_publication DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id) ON DELETE CASCADE
+);
+
+-- Création de la table likes
+CREATE TABLE likes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_utilisateur INT NOT NULL,
+    id_contenu INT NOT NULL,
+    date_like DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_contenu) REFERENCES contenus(id) ON DELETE CASCADE,
+    UNIQUE (id_utilisateur, id_contenu)
+);
+
+-- Création de la table commentaires
+CREATE TABLE commentaires (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_contenu INT NOT NULL,
+    id_utilisateur INT NOT NULL,
+    message TEXT NOT NULL,
+    date_publication DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_contenu) REFERENCES contenus(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id) ON DELETE CASCADE
+);
+
+
+-- Insérer des utilisateurs
+INSERT INTO utilisateurs (pseudo, mot_de_passe) VALUES
+('user1', MD5('password1')),
+('user2', MD5('password2')),
+('user3', MD5('password3'));
+
+-- Insérer des contenus
+INSERT INTO contenus (id_utilisateur, description, chemin_image) VALUES
+(1, 'Premier contenu de user1', 'images/meme1.jpg'),
+(2, 'Premier contenu de user2', 'images/meme2.jpg'),
+(3, 'Premier contenu de user3', 'images/meme3.jpg'),
+(1, 'Second contenu de user1', 'images/meme4.jpg');
+
+-- Insérer des likes
+INSERT INTO likes (id_utilisateur, id_contenu) VALUES
+(1, 1),
+(2, 1),
+(3, 2),
+(1, 3);
+
+-- Insérer des commentaires
+INSERT INTO commentaires (id_contenu, id_utilisateur, message) VALUES
+(1, 2, 'Super contenu !'),
+(1, 3, 'J\'adore ce meme !'),
+(2, 1, 'Très drôle !'),
+(3, 2, 'Excellent travail！');
