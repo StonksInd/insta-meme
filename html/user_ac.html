@@ -4,129 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<link rel="stylesheet" href="../css/user_ac.css">
-<body>
-    <header>
-        
-        <div id="img_logo">
-            <a class="Button" href="index.html"> <img src="../image/Logo.png" alt="" width="70" style="padding-right:5px;"></a>
-            <a class="Button" href="index.html"> Acceuil </a>
+<body class="bg-gray-100">
+    <header class="bg-white shadow-md p-4 flex justify-between items-center">
+        <div class="flex items-center">
+            <a href="index.html" class="mr-4">
+                <img src="../image/Logo.png" alt="" class="w-10">
+            </a>
+            <a href="index.html" class="text-gray-800 font-semibold">Acceuil</a>
         </div>
-
+        <div class="flex items-center">
+            <input type="search" placeholder="Rechercher un compte…" class="border border-gray-300 rounded-full px-4 py-2 mr-4 w-64">
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600">Rechercher</button>
+        </div>
         <div>
-            <input type="search" placeholder="Rechercher un compte…" size="30">
-            <button>Rechercher</button>
+            <a href="create.html" class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 mr-4">Créer</a>
+            <a href="user_ac.html" class="bg-purple-500 text-white px-4 py-2 rounded-full hover:bg-purple-600">Profil</a>
         </div>
-
-        <div> 
-            <a class="Button" href="create.html">Créer</a>
-            <a class="Button" href="user_ac.html">Profil</a>
-        </div>
-        
-        
     </header>
 
-    <main>
-    
-        
-        <div id=span>
-            
-            <article><img src="../image/img1.gif" alt="" class=" meme"></article>
-            <div id="reaction">
-                <button>aimer</button>
-                <button>partage</button>
-    
-               
-               </div>
-        </div>
-
-        <div id=span>
-            
-            <article><img src="../image/img2.jpeg" alt="" class=" meme"></article>
-            <div id="reaction">
-                <button>aimer</button>
-                <button>partage</button>
-    
-               
-               </div>
-        </div>
-
-        <div id=span>
-            
-            <article><img src="../image/img3.jpeg" alt="" class=" meme"></article>
-            <div id="reaction">
-                <button>aimer</button>
-                <button>partage</button>
-    
-               
-               </div>
-        </div>
-
-        
-            <div id=span>
-                
-                <article><img src="../image/img6.gif" alt="" class=" meme"></article>
-                <div id="reaction">
-                    <button>aimer</button>
-                    <button>partage</button>
-        
-                   
-                   </div>
+    <main class="container mx-auto py-10 grid grid-cols-4 gap-4">
+        <div class="bg-white shadow-md p-6 rounded-lg">
+            <img src="../image/img1.gif" alt="" class="w-full rounded-lg">
+            <div class="flex justify-center mt-4">
+                <button class="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 mr-4">Aimer</button>
+                <button class="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600">Partage</button>
             </div>
-        
-
-        <div id=span>
-            
-            <article><img src="../image/img5.gif" alt="" class=" meme"></article>
-            <div id="reaction">
-                <button>aimer</button>
-                <button>partage</button>
-    
-               
-               </div>
         </div>
-
-        <div id=span>
-            
-            <article><img src="../image/img7.jpeg" alt="" class=" meme"></article>
-            <div id="reaction">
-                <button>aimer</button>
-                <button>partage</button>
-    
-               
-               </div>
-        </div>
-
-        <div id=span>
-            
-            <article><img src="../image/img8.jpeg" alt="" class=" meme"></article>
-            <div id="reaction">
-                <button>aimer</button>
-                <button>partage</button>
-    
-               
-               </div>
-        </div>
-
-        <div id=span>
-            
-            <article><img src="../image/img4.jpeg" alt="" class=" meme"></article>
-            <div id="reaction">
-                <button>aimer</button>
-                <button>partage</button>
-    
-               
-               </div>
-        </div>
-
-      
-
-    
-
-
-
+        <!-- Repeat the above div for other memes -->
     </main>
-
 </body>
 </html>
