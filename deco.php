@@ -6,5 +6,4 @@ if($_SESSION["Is_conected"]){
     session_destroy();
 }
 header("location:index.php");
-
 ?>

@@ -22,12 +22,10 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             
         } 
 
-        
-
         $referer = $_SERVER['HTTP_REFERER'] ?? 'index.php'; 
         header("Location: $referer");
     } else {
-        header("Location: login.php");}
+        header("Location: login.php");
+    }
 }
-
 ?>
