@@ -49,42 +49,44 @@ if(isset($_POST["commentaire"])){
 <link rel="stylesheet" href="css/style.css">
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 
-<main class="min-h-screen bg-gray-100 p-4">
+<main id="main" class="container mx-auto py-10 grid grid-cols-3 gap-4">
     <div class="container mx-auto">
-        <?php
-        foreach ($contenus as $contenu) {
-            echo 
-            '<div class="bg-white p-4 rounded-lg shadow-lg mb-4">
-                <h2 class="text-lg font-medium"><a href="user_ac.php?pseudo='.$contenu['pseudo'].'" class="text-indigo-600 hover:underline">'.$contenu['pseudo'].'</a></h2>
-                <a href="content.php?contenu='.$contenu["id"].'"><img src="' . 'images/' . $contenu['chemin_image'] . '" class="w-full rounded-lg" /></a>
-                <div class="flex items-center mt-2">
-                    <form action="like.php" method="POST" class="mr-2">
-                        <input type="hidden" value="' . $contenu['id'] . '" name="id_contenu">
-                        <button name="like" type="submit" class="bg-indigo-600 text-white px-2 py-1 rounded hover:bg-indigo-700">Like</button>
-                    </form>
-                    <a href="partage.php?fichier='. $contenu['chemin_image'] .'" class="bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700">Partage</a>
-                </div>
-                <p class="mt-2">Aimé par ' . $contenu['likes'] . ' utilisateurs</p>
-                <p class="mt-2">' . $contenu['description'] . '</p>
-                <div class="carrecommentaire mt-2">' . $contenu['messages'] . '</div>';
-            if(isset($_SESSION["Is_conected"]) && $_SESSION["Is_conected"]){
-                echo '
-                <form action="index.php" method="POST" class="mt-2">
-                    <input type="text" name="commentaire" class="block w-full border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500">
-                    <input type="hidden" name="id_contenu" value="'. $contenu['id'] .'">
-                    <button type="submit" class="bg-indigo-600 text-white px-2 py-1 rounded hover:bg-indigo-700">Publier un commentaire</button>
-                </form>';
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <?php
+            foreach ($contenus as $contenu) {
+                echo 
+                '<div class="bg-white p-4 rounded-lg shadow-lg">
+                    <h2 class="text-lg font-medium"><a href="user_ac.php?pseudo='.$contenu['pseudo'].'" class="text-indigo-600 hover:underline">'.$contenu['pseudo'].'</a></h2>
+                    <a href="content.php?contenu='.$contenu["id"].'"><img src="' . 'images/' . $contenu['chemin_image'] . '" class="meme" /></a>
+                    <div class="flex items-center mt-2">
+                        <form action="like.php" method="POST" class="mr-2">
+                            <input type="hidden" value="' . $contenu['id'] . '" name="id_contenu">
+                            <button name="like" type="submit" class="Button bg-indigo-600 text-white px-2 py-1 rounded hover:bg-indigo-700">Like</button>
+                        </form>
+                        <a href="partage.php?fichier='. $contenu['chemin_image'] .'" class="Button bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700">Partage</a>
+                    </div>
+                    <p class="mt-2">Aimé par ' . $contenu['likes'] . ' utilisateurs</p>
+                    <p class="mt-2">' . $contenu['description'] . '</p>
+                    <div class="carrecommentaire mt-2">' . $contenu['messages'] . '</div>';
+                if(isset($_SESSION["Is_conected"]) && $_SESSION["Is_conected"]){
+                    echo '
+                    <form action="index.php" method="POST" class="mt-2">
+                        <input type="text" name="commentaire" class="block w-full border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500">
+                        <input type="hidden" name="id_contenu" value="'. $contenu['id'] .'">
+                        <button type="submit" class="Button bg-indigo-600 text-white px-2 py-1 rounded hover:bg-indigo-700">Publier un commentaire</button>
+                    </form>';
+                }
+                else{
+                    echo '<a href="login.php" class="Button bg-indigo-600 text-white px-2 py-1 rounded hover:bg-indigo-700">Connectez-vous pour commenter</a>';
+                }
+                echo '</div>';
             }
-            else{
-                echo '<a href="login.php" class="bg-indigo-600 text-white px-2 py-1 rounded hover:bg-indigo-700">Connectez-vous pour commenter</a>';
-            }
-            echo '</div>';
-        }
-        ?>
+            ?>
+        </div>
     </div>
 </main>
 
-<div class="flex justify-center mt-4">
+<div id="pagination" class="flex justify-center mt-4">
     <?php
     for($i=1;$i<=$nb_pages;$i++){
         if($page!=$i){
