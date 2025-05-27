@@ -97,7 +97,7 @@ La base de données `insta_meme` contient 4 tables principales :
 
 1. **Cloner le projet**
    ```bash
-   git clone [url-du-repo]
+   git clone https://github.com/StonksInd/insta-meme.git
    cd insta_meme
    ```
 
