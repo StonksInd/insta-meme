@@ -1,4 +1,4 @@
-# Insta Meme 📸
+# Insta Meme 
 
 Une plateforme de partage de mèmes inspirée d'Instagram, développée en PHP avec une interface moderne utilisant Tailwind CSS.
 
@@ -23,7 +23,6 @@ Insta Meme est une application web qui permet aux utilisateurs de :
 - **HTML5** - Structure des pages
 - **CSS3** - Styles personnalisés
 - **Tailwind CSS** - Framework CSS utilitaire
-- **JavaScript** - Interactions côté client (intégré dans les formulaires)
 
 ### Autres
 - **Sessions PHP** - Gestion de l'authentification
