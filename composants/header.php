@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
-    <link rel="stylesheet" href="css/header.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
@@ -13,11 +12,11 @@
 
 <header class="bg-white shadow">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-        <div id="img_logo">
+        <div class="flex items-center">
             <a class="Button" href="index.php"> 
                 <img src="image/Logo.png" alt="" width="70" style="padding-right:5px;">
             </a>
-            <a class="Button text-indigo-600 hover:text-indigo-700" href="index.php">Acceuil</a>
+            <a class="Button bg-indigo-600 text-white px-2 py-1 rounded hover:bg-indigo-700" href="index.php">Accueil</a>
         </div>
 
         <div>

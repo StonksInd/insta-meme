@@ -33,7 +33,6 @@ if(isset($_POST["commentaire"])){
 ?>
 
 <?php echo pageHeader("Menu Insta Meme");?>
-<link rel="stylesheet" href="css/content.css">
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 <main class="min-h-screen bg-gray-100 p-4">
     <div class="container mx-auto">

@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="css/recherche.css">
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 <?php
 require_once 'php/affichage.php';

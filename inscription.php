@@ -14,12 +14,11 @@ if(isset($_POST['user_pseudo']) && !empty($_POST['user_pseudo'])
 }
 
 ?>
-<link rel="stylesheet" href="css/login.css">
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 <?php echo pageHeader("Menu Insta Meme");?>
 
-<div class='container mx-auto p-4'>
-    <form action="" method="POST" class="bg-white p-8 rounded-lg shadow-lg w-96">
+<div class='flex items-center justify-center min-h-screen bg-gray-100'>
+    <form action="" method="POST" class="bg-white p-8 rounded-lg shadow-lg w-96 ">
         <ul class="space-y-4">
             <li>
                 <label for="name" class="block text-sm font-medium text-gray-700">Pseudo&nbsp;:</label>
